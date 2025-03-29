@@ -1,0 +1,28 @@
+@model List<Course>
+<div class="container"><h1>home/index</h1></div>
+
+@section Header{
+
+    @await Html.PartialAsync("_Header")
+}
+<div class="container">
+    <div class="row">
+
+        @foreach(var kurs in Model){
+            
+            @if( kurs.IsActive && kurs.IsHome){
+
+                <div class="card" style="width: 18rem; margin-right: 20px;" >
+                    <img src="~/images/@kurs.Image" style="width: 100%; height: 200px; object-fit: cover;"  alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">@kurs.Title</h5>
+                        <p class="card-text">@kurs.Description</p>
+                        <a href="/course/details/@kurs.Id" class="btn btn-primary">Kartın Sayfası</a>
+                    </div>
+                </div>
+                
+            }
+            
+        }
+    </div>
+</div>
